@@ -8,10 +8,10 @@
 [node name="Level" type="Node2D" parent="."]
 script = ExtResource( 4 )
 
-[node name="Player" parent="Level" instance=ExtResource( 1 )]
+[node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 201.814, 94.493 )
 
-[node name="Camera2D" type="Camera2D" parent="Level/Player"]
+[node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2( -0.183319, -0.0508118 )
 current = true
 drag_margin_top = 0.31

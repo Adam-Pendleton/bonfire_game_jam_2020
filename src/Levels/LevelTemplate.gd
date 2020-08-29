@@ -2,6 +2,7 @@ extends Node2D
 
 class_name LevelTemplate
 onready var rng = RandomNumberGenerator.new()
+onready var player := get_node("/root/Game/Player")
 onready var coal_scene = preload("res://src/Objects/Coal.tscn")
 
 func _ready() -> void:
@@ -22,4 +23,4 @@ func spawn_coal(cell_position: Vector2) -> void:
 		var coal = coal_scene.instance()
 		coal.position = coal_position
 		add_child(coal)
-
+		coal.connect("coal_collected", player, "on_coal_collected")

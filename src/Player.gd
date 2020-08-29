@@ -13,11 +13,12 @@ var velocity: Vector2
 var facing_left: bool = true
 var dead: bool = false
 
+var coal_count = 0
+
+signal coal_count_changed
+
 onready var anim_player: AnimationPlayer = get_node("AnimationPlayer")
 
-func _ready() -> void:
-	pass # Replace with function body.
-	
 func update_sprite():
 	if velocity.y < 0:
 		anim_player.play("jump")
@@ -105,6 +106,11 @@ func add_air_resistance(given_velocity: Vector2) -> Vector2:
 	given_velocity.x = lerp(given_velocity.x, 0, air_resistance)
 	return given_velocity
 	
+func on_coal_collected() -> void:
+	coal_count = (coal_count + 1) % 10
+	emit_signal("coal_count_changed", coal_count)
+	print("coal count %d" % coal_count)
+		
 func can_shoot_money() -> bool:
 	return true
 	

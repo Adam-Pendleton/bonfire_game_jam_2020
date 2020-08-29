@@ -23,7 +23,7 @@ func update_sprite():
 		anim_player.play("jump")
 	elif velocity.y > 0:
 		anim_player.play("fall")
-	elif velocity.abs().is_equal_approx(Vector2.ZERO):
+	elif velocity.abs().x <= 20:
 		anim_player.play("idle")
 	else:
 		anim_player.play("run")

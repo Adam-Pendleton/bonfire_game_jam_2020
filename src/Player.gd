@@ -3,9 +3,10 @@ export var gravity: int = 30
 export var max_fall_speed: int = 1000
 export var accel: int = 100
 export var max_max_speed: int = 200
-export var friction: float = 0.7
+export var friction: float = 0.2
 export var jump_strength: int = 500
 
+var jump_count = 0
 var velocity: Vector2
 var facing_left: bool = true
 var dead: bool = false
@@ -49,8 +50,12 @@ func add_player_input(given_velocity: Vector2) -> Vector2:
 		given_velocity.x += accel
 	elif Input.get_action_strength("left") > 0:
 		given_velocity.x -= accel
+	
 	if Input.get_action_strength("up") > 0 and is_on_floor():
 		given_velocity.y = -jump_strength
+		
+	if Input.is_action_just_released("up") and given_velocity.y < -150:
+		given_velocity.y = -150
 	
 	return given_velocity
 	
@@ -62,5 +67,5 @@ func add_gravity(given_velocity: Vector2) -> Vector2:
 	return given_velocity
 	
 func add_friction(given_velocity: Vector2) -> Vector2:
-	given_velocity.x = given_velocity.x * friction
+	given_velocity.x = lerp(given_velocity.x, 0, friction)
 	return given_velocity

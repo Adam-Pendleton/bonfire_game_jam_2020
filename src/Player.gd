@@ -8,7 +8,7 @@ export var jump_strength: int = 500
 
 var velocity: Vector2
 var facing_left: bool = true
-
+var dead: bool = false
 
 func _ready() -> void:
 	pass # Replace with function body.
@@ -24,9 +24,18 @@ func update_sprite():
 		$Sprite.flip_h = false
 	
 func _physics_process(delta: float) -> void:
+	if dead:
+		return
 	var new_velocity = get_new_velocity()
 	velocity = move_and_slide(new_velocity, Vector2.UP)
+	check_if_dead()
 	update_sprite()
+	
+func check_if_dead() -> void:
+	for i in get_slide_count():
+		if get_slide_collision(i).collider.name == "Bank":
+			dead = true
+			set_process(false)
 
 func get_new_velocity() -> Vector2:
 	var new_velocity: Vector2 = velocity

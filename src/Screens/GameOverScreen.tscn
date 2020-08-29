@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/images/screens/game_over.png" type="Texture" id=1]
+
+[node name="GameOverScreen" type="CanvasLayer"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_top = 0.001
+anchor_bottom = 0.001
+margin_left = -4.54901
+margin_top = -15.6569
+margin_right = 130.451
+margin_bottom = 213.343
+mouse_filter = 2
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}

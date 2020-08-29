@@ -1,14 +1,9 @@
 extends Node
 
-
-# Declare member variables here. Examples:
-# var a: int = 2
-# var b: String = "text"
 var game_over: bool = false
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
 	
 func _process(delta: float) -> void:
 	if game_over and Input.get_action_strength("up") > 0:
@@ -32,7 +27,3 @@ func restart_level() -> void:
 	$Level.clear_stages()
 	$Level.create_initial_level()
 	$GameOverScreen.call_deferred("free")
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta: float) -> void:
-#	pass

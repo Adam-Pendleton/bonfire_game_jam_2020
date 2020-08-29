@@ -24,6 +24,7 @@ tracks/0/keys = {
 }
 
 [node name="MoneyBag" type="Area2D"]
+z_index = 7
 collision_layer = 16
 collision_mask = 8
 script = ExtResource( 2 )
@@ -35,7 +36,7 @@ hframes = 10
 frame = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -1163.22, -423.96 )
+position = Vector2( -1.91504, 3.21603 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

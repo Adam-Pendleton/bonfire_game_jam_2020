@@ -6,18 +6,17 @@ export var stage_forgetting_distance = 900
 export var stage_spawn_distance = 600
 
 var highest_stage = null
-var templates_count = 2
+var templates_count = 3
 
 func _ready() -> void:
 	create_initial_level()
 	
 func create_initial_level() -> void:
-	var spawn_position: Vector2 = player.position
-	spawn_position.y += 50
+	var spawn_position: Vector2 = player.position + Vector2(0, 40)
 	highest_stage = generate_level_stage(spawn_position)
+	spawn_position.y -= highest_stage.height
 	while player.position.distance_to(highest_stage.position) < stage_spawn_distance:
 		highest_stage = generate_level_stage(spawn_position)
-		#TODO: each stage should be able to have its own height
 		spawn_position.y -= highest_stage.height
 		
 func _process(delta) -> void:
@@ -43,3 +42,7 @@ func get_level_template_scene() -> Resource:
 	level_path = level_path % random_number
 	var level_stage: Resource = load(level_path)
 	return level_stage
+
+func clear_stages() -> void:
+	for stage in get_children():
+		stage.call_deferred("free")

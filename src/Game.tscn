@@ -28,3 +28,5 @@ editor_draw_drag_margin = true
 [node name="Bank" parent="." instance=ExtResource( 2 )]
 position = Vector2( 324.134, 816.126 )
 z_index = 1
+collision_layer = 8
+collision_mask = 18

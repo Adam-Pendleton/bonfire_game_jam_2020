@@ -32,16 +32,19 @@ func update_sprite():
 		facing_left = true
 	elif velocity.x > 0:
 		facing_left = false
+		
+	var sprite = get_node("player_sprite")
 	if facing_left:
-		var sprite = get_node("player_sprite")
 		sprite.flip_h = true
 	else:
-		var sprite = get_node("player_sprite")
 		sprite.flip_h = false
 	
 func _physics_process(delta: float) -> void:
 	if dead:
 		return
+	if Input.is_action_just_pressed("drop_money"):
+		drop_money()
+	
 	var new_velocity = get_new_velocity()
 	if is_on_floor():
 		jump_count = 0
@@ -101,3 +104,23 @@ func add_friction(given_velocity: Vector2) -> Vector2:
 func add_air_resistance(given_velocity: Vector2) -> Vector2:
 	given_velocity.x = lerp(given_velocity.x, 0, air_resistance)
 	return given_velocity
+	
+func can_shoot_money() -> bool:
+	return true
+	
+func decrease_money_count() -> void:
+	pass
+	
+func indicate_no_money() -> void:
+	pass
+
+func drop_money() -> void:
+	if can_shoot_money():
+		var money_bag_scene = preload("res://src/Objects/MoneyBag.tscn")
+		var money_bag = money_bag_scene.instance()
+		money_bag.position = position
+		get_parent().add_child(money_bag)
+		decrease_money_count()
+	else:
+		#nice to have feature:
+		indicate_no_money()

@@ -7,9 +7,10 @@ export var stage_spawn_distance = 600
 
 var highest_stage = null
 var templates_count = 3
+var testing_levels = null
 
 func _ready() -> void:
-	create_initial_level()
+	pass
 	
 func create_initial_level() -> void:
 	var spawn_position: Vector2 = player.position + Vector2(0, 40)

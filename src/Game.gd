@@ -1,9 +1,10 @@
 extends Node
 
 var game_over: bool = false
+var player_start_position := Vector2(300, 100)
 
 func _ready() -> void:
-	pass
+	initialize_level()
 	
 func _process(delta: float) -> void:
 	if game_over and Input.get_action_strength("up") > 0:
@@ -21,9 +22,13 @@ func show_game_over_screen() -> void:
 	add_child(game_over_screen)
 
 func restart_level() -> void:
+	initialize_level()
+	$Bank.reset_speed()
+	$GameOverScreen.call_deferred("free")
+	
+func initialize_level() -> void:
 	$Player.dead = false
-	$Player.position = Vector2(40,40)
+	$Player.position = player_start_position
 	$Bank.position = $Player.position + Vector2(0, 600)
 	$Level.clear_stages()
 	$Level.create_initial_level()
-	$GameOverScreen.call_deferred("free")

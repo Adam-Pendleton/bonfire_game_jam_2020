@@ -30,6 +30,7 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 0/z_index = 0
 
 [node name="LevelTemplate" type="Node2D"]
+position = Vector2( 1.26797, -34.658 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 243.0 ],

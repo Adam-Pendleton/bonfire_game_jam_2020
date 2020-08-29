@@ -12,12 +12,14 @@ script = ExtResource( 3 )
 script = ExtResource( 4 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 201.814, 94.493 )
+position = Vector2( 300, 100 )
 collision_mask = 5
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2( -0.183319, -0.0508118 )
+position = Vector2( -0.183319, 3.63184 )
 current = true
+limit_left = 0
+limit_right = 600
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 drag_margin_bottom = 0.45

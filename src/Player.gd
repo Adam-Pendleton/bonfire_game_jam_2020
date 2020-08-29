@@ -9,19 +9,31 @@ export var jump_strength: int = 500
 var velocity: Vector2
 var facing_left: bool = true
 
+onready var anim_player: AnimationPlayer = get_node("AnimationPlayer")
 
 func _ready() -> void:
 	pass # Replace with function body.
 	
 func update_sprite():
+	if velocity.y < 0:
+		anim_player.play("jump")
+	elif velocity.y > 0:
+		anim_player.play("fall")
+	elif velocity.abs().is_equal_approx(Vector2.ZERO):
+		anim_player.play("idle")
+	else:
+		anim_player.play("run")
+	
 	if velocity.x < 0:
 		facing_left = true
 	elif velocity.x > 0:
 		facing_left = false
 	if facing_left:
-		$Sprite.flip_h = true
-	else: 
-		$Sprite.flip_h = false
+		var sprite = get_node("player_sprite")
+		sprite.flip_h = true
+	else:
+		var sprite = get_node("player_sprite")
+		sprite.flip_h = false
 	
 func _physics_process(delta: float) -> void:
 	var new_velocity = get_new_velocity()

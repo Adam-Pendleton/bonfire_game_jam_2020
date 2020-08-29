@@ -42,3 +42,7 @@ func get_level_template_scene() -> Resource:
 	level_path = level_path % random_number
 	var level_stage: Resource = load(level_path)
 	return level_stage
+
+func clear_stages() -> void:
+	for stage in get_children():
+		stage.call_deferred("free")

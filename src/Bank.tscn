@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/Bank.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 595.01, 107.778 )
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 10, 10, 22, 25, 40 )
+colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+width = 2049
+
+[node name="Bank" type="KinematicBody2D"]
+script = ExtResource( 1 )
+speed = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2( -1692.51, -4268.1 )
+scale = Vector2( 110.33, 209.295 )
+color = Color( 0.0745098, 0.384314, 0.0117647, 1 )
+texture = SubResource( 3 )
+texture_scale = Vector2( 100, 100 )
+polygon = PoolVector2Array( 9.95028, 19.8782, 9.26069, 21.3963, 21.5424, 21.4774, 20.7325, 19.8776 )

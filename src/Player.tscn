@@ -4,15 +4,16 @@
 [ext_resource path="res://src/Player.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 9.34348, 9.44877 )
+extents = Vector2( 8.46481, 8.90423 )
 
 [node name="Player" type="KinematicBody2D"]
+position = Vector2( 0, -0.0704441 )
 script = ExtResource( 2 )
 gravity = 62
 jump_strength = 1078
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.430229, 0 )
+position = Vector2( -0.571117, 0.528334 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]

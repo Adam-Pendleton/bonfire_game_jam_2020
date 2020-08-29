@@ -5,6 +5,7 @@ var player_start_position := Vector2(300, 100)
 
 func _ready() -> void:
 	initialize_level()
+	start_music()
 	
 func _process(delta: float) -> void:
 	if game_over and Input.is_action_just_pressed("up") and $ShowScreenTimer.get_time_left() == 0:
@@ -44,3 +45,8 @@ func initialize_level() -> void:
 	$Bank.position = $Player.position + Vector2(0, 600)
 	$Level.clear_stages()
 	$Level.create_initial_level()
+	
+func start_music() -> void:
+	$MusicStart.play()
+	yield($MusicStart, "finished")
+	$MusicBody.play()

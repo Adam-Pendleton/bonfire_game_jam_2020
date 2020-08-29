@@ -1,6 +1,7 @@
 extends HBoxContainer
 
-var coal_img = preload("res://assets/coal.png")
+var coal = preload("res://assets/images/objects/coal.png")
+var coal_outline = preload("res://assets/images/objects/coal_outline.png")
 
 onready var player := get_node("/root/Game/Player")
 
@@ -9,4 +10,8 @@ func _ready() -> void:
 
 func update_coal_bar(coal_count) -> void:
 	for i in get_child_count():
-		get_child(i).visible = coal_count > i
+		if coal_count > i:
+			get_child(i).texture = coal
+		else:
+			get_child(i).texture = coal_outline
+		

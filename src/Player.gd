@@ -1,10 +1,10 @@
 extends KinematicBody2D
-export var gravity: int = 10
+export var gravity: int = 30
 export var max_fall_speed: int = 1000
 export var accel: int = 100
 export var max_max_speed: int = 200
 export var friction: float = 0.7
-export var jump_strength: int = 300
+export var jump_strength: int = 500
 
 var velocity: Vector2
 var facing_left: bool = true

@@ -7,7 +7,6 @@
 extents = Vector2( 9.34348, 9.44877 )
 
 [node name="Player" type="KinematicBody2D"]
-collision_layer = 2
 script = ExtResource( 2 )
 gravity = 62
 jump_strength = 1078

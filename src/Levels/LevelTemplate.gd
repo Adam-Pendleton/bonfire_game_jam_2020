@@ -10,9 +10,7 @@ func _ready() -> void:
 
 func populate_coals(coal_rate: float) -> void:
 	var cells = $TileMap.get_used_cells()
-	print(len(cells))
 	for cell in cells:
-		print(cell)
 		rng.randomize()
 		if rng.randf() < coal_rate:
 			spawn_coal(cell)

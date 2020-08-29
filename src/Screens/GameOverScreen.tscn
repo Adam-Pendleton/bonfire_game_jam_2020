@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/images/screens/game_over.png" type="Texture" id=1]
 [ext_resource path="res://assets/fonts/rubber-biscuit.bold.ttf" type="DynamicFontData" id=2]
@@ -7,6 +7,10 @@
 [sub_resource type="DynamicFont" id=1]
 size = 45
 font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 62
+font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 31
@@ -35,23 +39,31 @@ anchor_left = 0.162
 anchor_top = 0.148
 anchor_right = 0.77
 anchor_bottom = 0.258
-margin_left = 30.6528
+margin_left = 68.6257
 margin_top = 115.288
-margin_right = 32.8528
+margin_right = 70.8257
 margin_bottom = 126.128
+rect_scale = Vector2( 0.996556, 1 )
 custom_fonts/font = SubResource( 1 )
-text = "BANKRUPTCY
-"
+text = "BANKRUPT"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Label" type="Label" parent="h1"]
+margin_left = 281.018
+margin_top = -9.49326
+margin_right = 321.018
+margin_bottom = 53.5067
+custom_fonts/font = SubResource( 3 )
+text = "!"
+
 [node name="h2" type="Label" parent="."]
 anchor_right = 0.095
 anchor_bottom = 0.013
-margin_left = 57.6017
+margin_left = 54.1445
 margin_top = 576.279
-margin_right = 514.602
+margin_right = 511.145
 margin_bottom = 698.55
 custom_fonts/font = SubResource( 2 )
 text = "Press <jump> to keep working"

@@ -15,6 +15,7 @@ var dead: bool = false
 
 var coal_count = 0
 var money_count = 0
+var money_bag_value = 3
 
 signal coal_count_changed
 signal money_count_changed
@@ -109,7 +110,7 @@ func add_air_resistance(given_velocity: Vector2) -> Vector2:
 	return given_velocity
 	
 func on_coal_collected() -> void:
-	coal_count = (coal_count + 1) % 10
+	coal_count = (coal_count + 1) % money_bag_value
 	if coal_count == 0:
 		money_count += 1
 		emit_signal("money_count_changed", money_count)
@@ -122,6 +123,12 @@ func decrease_money_count() -> void:
 	money_count -= 1
 	emit_signal("money_count_changed", money_count)
 
+func clear_money_count() -> void:
+	money_count = 0
+	coal_count = 0
+	emit_signal("money_count_changed", money_count)
+	emit_signal("coal_count_changed", coal_count)
+	
 func indicate_no_money() -> void:
 	pass
 

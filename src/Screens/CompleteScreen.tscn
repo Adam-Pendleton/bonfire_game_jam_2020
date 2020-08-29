@@ -1,8 +1,17 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/images/screens/game_over.png" type="Texture" id=1]
+[ext_resource path="res://assets/fonts/half-bold-pixel-7/half_bold_pixel-7.ttf" type="DynamicFontData" id=2]
 
-[node name="GameOverScreen" type="CanvasLayer"]
+[sub_resource type="DynamicFont" id=1]
+size = 28
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 29
+font_data = ExtResource( 2 )
+
+[node name="CompleteScreen" type="CanvasLayer"]
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_right = 1.0
@@ -19,3 +28,36 @@ stretch_mode = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Label" type="RichTextLabel" parent="TextureRect"]
+margin_left = 70.0
+margin_top = 292.0
+margin_right = 557.0
+margin_bottom = 350.0
+rect_scale = Vector2( 0.994257, 1.67691 )
+rect_pivot_offset = Vector2( 367.948, 37.359 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "You loaded 16 tons of coal!
+"
+fit_content_height = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="TextureRect"]
+margin_left = 66.3101
+margin_top = 603.0
+margin_right = 566.31
+margin_bottom = 633.0
+rect_pivot_offset = Vector2( 367.948, 37.359 )
+custom_fonts/font = SubResource( 2 )
+text = "Press <jump> to keep working"
+
+[node name="Label3" type="Label" parent="TextureRect"]
+margin_left = 47.2833
+margin_top = 342.148
+margin_right = 581.283
+margin_bottom = 372.148
+rect_pivot_offset = Vector2( 367.948, 37.359 )
+custom_fonts/font = SubResource( 2 )
+text = "The company store says thanks"

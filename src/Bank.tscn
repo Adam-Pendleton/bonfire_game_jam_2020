@@ -13,7 +13,8 @@ script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 position = Vector2( -1.01514, 0 )
-polygon = PoolVector2Array( 1.59128, -114.248, 272.916, 23.5805, 308.931, 25.476, 769.389, 363.348, 2075.75, 723.551, -2270.94, 741.823, -630.363, 334.902, -325.354, 44.6237, -296.773, 38.1453 )
+scale = Vector2( 1.00886, 1.03939 )
+polygon = PoolVector2Array( -14.7084, 144.306, 256.534, 149.337, 329.095, 183.993, 769.389, 363.348, 2075.75, 723.551, -2270.94, 741.823, -630.363, 334.902, -327.414, 166.665, -266.946, 157.162 )
 
 [node name="BaseSprite" type="Sprite" parent="."]
 position = Vector2( -15.7028, 202.684 )

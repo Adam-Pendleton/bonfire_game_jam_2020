@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 9.34348, 9.44877 )
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=2]
 resource_name = "fall"
 length = 0.1
 tracks/0/type = "value"
@@ -54,8 +54,7 @@ tracks/0/keys = {
 "values": [ 24 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "run"
+[sub_resource type="Animation" id=5]
 length = 1.2
 loop = true
 tracks/0/type = "value"
@@ -90,7 +89,7 @@ frame = 25
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
-anims/fall = SubResource( 5 )
+anims/fall = SubResource( 2 )
 anims/idle = SubResource( 3 )
 anims/jump = SubResource( 4 )
-anims/run = SubResource( 2 )
+anims/run = SubResource( 5 )

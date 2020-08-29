@@ -1,6 +1,6 @@
-extends Node2D
+extends LevelTemplate
 
 export var height = 190
 
 func _ready() -> void:
-	pass
+	populate_coals(.2)

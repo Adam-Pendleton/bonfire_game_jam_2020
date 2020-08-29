@@ -22,7 +22,6 @@ _global_script_class_icons={
 
 config/name="Bonfire2020"
 run/main_scene="res://src/Game.tscn"
-config/icon="res://icon.png"
 
 [display]
 

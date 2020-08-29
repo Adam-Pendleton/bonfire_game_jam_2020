@@ -117,6 +117,7 @@ func on_coal_collected() -> void:
 	emit_signal("coal_count_changed", coal_count)
 		
 func can_shoot_money() -> bool:
+
 	return money_count > 0
 	
 func decrease_money_count() -> void:

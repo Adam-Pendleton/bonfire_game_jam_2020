@@ -14,8 +14,10 @@ var facing_left: bool = true
 var dead: bool = false
 
 var coal_count = 0
+var money_count = 0
 
 signal coal_count_changed
+signal money_count_changed
 
 onready var anim_player: AnimationPlayer = get_node("AnimationPlayer")
 
@@ -108,15 +110,18 @@ func add_air_resistance(given_velocity: Vector2) -> Vector2:
 	
 func on_coal_collected() -> void:
 	coal_count = (coal_count + 1) % 10
+	if coal_count == 0:
+		money_count += 1
+		emit_signal("money_count_changed", money_count)
 	emit_signal("coal_count_changed", coal_count)
-	print("coal count %d" % coal_count)
 		
 func can_shoot_money() -> bool:
-	return true
+	return money_count > 0
 	
 func decrease_money_count() -> void:
-	pass
-	
+	money_count -= 1
+	emit_signal("money_count_changed", money_count)
+
 func indicate_no_money() -> void:
 	pass
 

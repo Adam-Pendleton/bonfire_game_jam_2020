@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/images/level/WallTile.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 24.901, 526.016 )
+
+[node name="Wall" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -28.7104, -353.389 )
+shape = SubResource( 1 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = -70.0969
+margin_top = -874.936
+margin_right = -6.09689
+margin_bottom = 150.064
+texture = ExtResource( 1 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -6,7 +6,7 @@ export var stage_forgetting_distance = 900
 export var stage_spawn_distance = 600
 
 var highest_stage = null
-var templates_count = 3
+var templates_count = 4
 var testing_levels = null
 
 func create_initial_level() -> void:

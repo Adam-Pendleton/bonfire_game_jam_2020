@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Bank.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/audio/music/music_start.wav" type="AudioStream" id=7]
 [ext_resource path="res://src/BankBackground.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/background.jpg" type="Texture" id=9]
+[ext_resource path="res://assets/bg_tile.png" type="Texture" id=10]
 
 [node name="Game" type="Node"]
 script = ExtResource( 3 )
@@ -55,17 +56,43 @@ one_shot = true
 scroll_base_scale = Vector2( 0.2, 0.2 )
 scroll_ignore_camera_zoom = true
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2( 150, 403.626 )
+[node name="mine_support_front" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( -2, 0 )
+motion_scale = Vector2( 0.5, 0.5 )
+motion_mirroring = Vector2( 0, 800 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/mine_support_front"]
+self_modulate = Color( 1, 1, 1, 0.34902 )
+position = Vector2( 0, 339.963 )
+scale = Vector2( 0.85, 0.85 )
+texture = ExtResource( 10 )
+
+[node name="gradient background" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 148, 0 )
 z_index = 1
 motion_scale = Vector2( 0.1, 0.1 )
 motion_offset = Vector2( -125, 0 )
-motion_mirroring = Vector2( 0, 1210 )
+motion_mirroring = Vector2( 0, 1220.5 )
 
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 0, 219.868 )
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/gradient background"]
+self_modulate = Color( 1, 1, 1, 0.572549 )
+position = Vector2( 0, 211.469 )
 scale = Vector2( 0.78125, 1.41422 )
 z_as_relative = false
 texture = ExtResource( 9 )
+
+[node name="mine_support_back" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.3, 0.3 )
+motion_mirroring = Vector2( 0, 800 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/mine_support_back"]
+self_modulate = Color( 1, 1, 1, 0.356863 )
+position = Vector2( 291, -113.909 )
+texture = ExtResource( 10 )
+
+[node name="Sprite2" type="Sprite" parent="ParallaxBackground/mine_support_back"]
+self_modulate = Color( 1, 1, 1, 0.415686 )
+position = Vector2( 324.124, 403.626 )
+texture = ExtResource( 10 )
 
 [editable path="HUD"]

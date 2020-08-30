@@ -72,7 +72,7 @@ tracks/0/keys = {
 "values": [ 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 resource_name = "bling"
 length = 1.2
 tracks/0/type = "value"
@@ -112,8 +112,7 @@ tracks/2/keys = {
 "values": [ Vector2( 1.90445, -20.5081 ), Vector2( 1.90445, -41.4745 ) ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "default"
+[sub_resource type="Animation" id=7]
 tracks/0/type = "value"
 tracks/0/path = NodePath("DollarSprite:visible")
 tracks/0/interp = 1
@@ -163,5 +162,7 @@ hframes = 13
 [node name="DollarAnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "bling"
 playback_speed = 1.5
-anims/bling = SubResource( 7 )
-anims/default = SubResource( 6 )
+anims/bling = SubResource( 6 )
+anims/default = SubResource( 7 )
+
+[node name="CoyoteTimer" type="Timer" parent="."]

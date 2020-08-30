@@ -1,6 +1,40 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
+[ext_resource path="res://assets/fonts/half-bold-pixel-7/half_bold_pixel-7.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/images/screens/game_over.png" type="Texture" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect/Art:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect/Art:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [node name="IntroScreen" type="CanvasLayer"]
 
@@ -28,3 +62,23 @@ margin_bottom = 581.836
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Label" type="Label" parent="TextureRect"]
+anchor_right = 0.341
+anchor_bottom = 0.51
+margin_left = 292.129
+margin_top = 675.872
+margin_right = 399.276
+margin_bottom = 144.132
+custom_fonts/font = SubResource( 1 )
+text = "Press <Space> to continue >"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fader" type="AnimationPlayer" parent="."]
+anims/fade_in = SubResource( 2 )
+anims/fade_out = SubResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

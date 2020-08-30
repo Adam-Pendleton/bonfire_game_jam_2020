@@ -7,11 +7,11 @@ var on_splash_screen: bool = false
 var current_screen = null
 var player_start_position := Vector2(300, 100)
 onready var intro_slides: Array = [
+	preload("res://assets/images/screens/Title-Page.png"),
 	preload("res://assets/images/screens/master_of_mine_arts.png"),
 	preload("res://assets/images/screens/sweet_axe.png"),
 	preload("res://assets/images/screens/broke.png"),
-	preload("res://assets/images/screens/looming_bank.png"),
-	preload("res://assets/images/screens/Title-Page.png")
+	preload("res://assets/images/screens/looming_bank.png")
 ]
 
 func _ready() -> void:
@@ -19,10 +19,12 @@ func _ready() -> void:
 	start_music()
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("up") and not game_started:
+	if $IntroScreen:
+		print($IntroScreen.get_node("Timer").time_left)
+	if Input.is_action_just_pressed("drop_money") and not game_started:
 		progress_intro()
 	
-	if game_over and game_started and Input.is_action_just_pressed("up") and $ShowScreenTimer.get_time_left() == 0:
+	if game_over and game_started and Input.is_action_just_pressed("drop_money") and $ShowScreenTimer.get_time_left() == 0:
 		restart_level()
 		game_over = false
 			
@@ -37,6 +39,7 @@ func complete_level() -> void:
 
 func show_intro() -> void:
 	var intro_screen = preload("res://src/Screens/IntroScreen.tscn").instance()
+	intro_screen.get_node("TextureRect/Art").modulate = Color(1,1,1,1)
 	intro_screen.get_node("TextureRect/Art").texture = intro_slides[0]
 	current_screen = intro_screen
 	add_child(intro_screen)
@@ -49,12 +52,19 @@ func show_splash_screen() -> void:
 	add_child(splash_screen)
 	
 func progress_intro() -> void:
+	print($IntroScreen.get_node("Timer").time_left)
+	if $IntroScreen.get_node("Timer").time_left > 0:
+		return
 	intro_slide_number += 1
 	if intro_slide_number > len(intro_slides) - 1:
 		game_started = true
 		restart_level()
 	else: 
+		$IntroScreen.get_node("Timer").start(1.1)
+		$IntroScreen.get_node("Fader").play("fade_out")
+		yield(get_tree().create_timer(.6), "timeout")
 		$IntroScreen.get_node("TextureRect/Art").texture = intro_slides[intro_slide_number]
+		$IntroScreen.get_node("Fader").play("fade_in")
 
 func show_complete_screen() -> void:
 	var complete_screen = preload("res://src/Screens/CompleteScreen.tscn").instance()

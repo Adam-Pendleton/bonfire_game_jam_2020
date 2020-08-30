@@ -51,6 +51,7 @@ func update_sprite():
 func _physics_process(delta: float) -> void:
 	if dead:
 		return
+		
 	if Input.is_action_just_pressed("drop_money"):
 		drop_money()
 	

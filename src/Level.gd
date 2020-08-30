@@ -10,12 +10,20 @@ var templates_count = 4
 var testing_levels = null
 
 func create_initial_level() -> void:
+	
 	var spawn_position: Vector2 = player.position + Vector2(0, 40)
-	highest_stage = place_stage(0, spawn_position)
-	spawn_position.y -= highest_stage.height
-	while player.position.distance_to(highest_stage.position) < stage_spawn_distance:
-		highest_stage = place_random_stage(spawn_position)
+	
+	if testing_levels and len(testing_levels) > 0:
+		for level in testing_levels:
+			highest_stage = place_stage(level, spawn_position)
+			spawn_position.y -= highest_stage.height
+	else:
+		highest_stage = place_stage(0, spawn_position)
 		spawn_position.y -= highest_stage.height
+		while player.position.distance_to(highest_stage.position) < stage_spawn_distance:
+			highest_stage = place_random_stage(spawn_position)
+			spawn_position.y -= highest_stage.height
+	
 
 func place_random_stage(position: Vector2) -> Node:
 	rng.randomize()
@@ -31,6 +39,9 @@ func place_stage(stage_number: int, position: Vector2) -> Node:
 	return stage
 		
 func _process(delta) -> void:
+	if not get_node("/root/Game").game_started:
+		return
+		
 	for stage in get_children():
 		if player.position.y < stage.position.y and player.position.distance_to(stage.position) > stage_forgetting_distance:
 			stage.call_deferred("free")

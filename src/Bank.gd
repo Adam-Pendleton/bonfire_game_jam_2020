@@ -8,7 +8,8 @@ func _ready() -> void:
 	reset_speed()
 	
 func _physics_process(delta: float) -> void:
-	if get_node("/root/Game").game_over:
+	var game_node = get_node("/root/Game")
+	if game_node.game_over or not game_node.game_started:
 		return
 	position.y -= speed
 	speed += speed * acceleration_factor

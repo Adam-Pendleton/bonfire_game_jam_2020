@@ -2,44 +2,77 @@ extends Node
 
 var game_over: bool = false
 var game_started: bool = false
+var intro_slide_number: int = 0
+var on_splash_screen: bool = false
+var current_screen = null
 var player_start_position := Vector2(300, 100)
+onready var intro_slides: Array = [
+	preload("res://assets/images/screens/master_of_mine_arts.png"),
+	preload("res://assets/images/screens/sweet_axe.png"),
+	preload("res://assets/images/screens/broke.png"),
+	preload("res://assets/images/screens/looming_bank.png"),
+	preload("res://assets/images/screens/Title-Page.png")
+]
 
 func _ready() -> void:
-	initialize_level()
+	show_intro()
 	start_music()
 
 func _process(delta: float) -> void:
-	if game_over and Input.is_action_just_pressed("up") and $ShowScreenTimer.get_time_left() == 0:
+	if Input.is_action_just_pressed("up") and not game_started:
+		progress_intro()
+	
+	if game_over and game_started and Input.is_action_just_pressed("up") and $ShowScreenTimer.get_time_left() == 0:
 		restart_level()
 		game_over = false
-		
-	if $Player.dead and not game_over:
+			
+	
+	if game_started and $Player.dead and not game_over:
 		game_over = true
 		show_game_over_screen()
 
 func complete_level() -> void:
 	game_over = true
 	show_complete_screen()
-		
+
+func show_intro() -> void:
+	var intro_screen = preload("res://src/Screens/IntroScreen.tscn").instance()
+	intro_screen.get_node("TextureRect/Art").texture = intro_slides[0]
+	current_screen = intro_screen
+	add_child(intro_screen)
+	
+func show_splash_screen() -> void:
+	on_splash_screen = true
+	current_screen.call_deferred("free")
+	var splash_screen = preload("res://src/Screens/SplashScreen.tscn").instance()
+	current_screen = splash_screen
+	add_child(splash_screen)
+	
+func progress_intro() -> void:
+	intro_slide_number += 1
+	if intro_slide_number > len(intro_slides) - 1:
+		game_started = true
+		restart_level()
+	else: 
+		$IntroScreen.get_node("TextureRect/Art").texture = intro_slides[intro_slide_number]
+
 func show_complete_screen() -> void:
 	var complete_screen = preload("res://src/Screens/CompleteScreen.tscn").instance()
 	add_child(complete_screen)
+	current_screen = complete_screen
 	$ShowScreenTimer.start(2)
 	
 func show_game_over_screen() -> void:
 	var game_over_screen = preload("res://src/Screens/GameOverScreen.tscn").instance()
 	add_child(game_over_screen)
+	current_screen = game_over_screen
 	$ShowScreenTimer.start(1)
 	
 func restart_level() -> void:
 	initialize_level()
 	$Bank.reset_speed()
 	$Player.clear_money_count()
-	if get_node("GameOverScreen"):
-		$GameOverScreen.get_node("TextureRect").visible = false
-		$GameOverScreen.call_deferred("free")
-	else:
-		$CompleteScreen.call_deferred("free")
+	current_screen.call_deferred("free")
 	
 func initialize_level() -> void:
 	$Player.dead = false

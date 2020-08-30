@@ -9,16 +9,26 @@ var highest_stage = null
 var templates_count = 3
 var testing_levels = null
 
-func _ready() -> void:
-	pass
-	
 func create_initial_level() -> void:
 	var spawn_position: Vector2 = player.position + Vector2(0, 40)
-	highest_stage = generate_level_stage(spawn_position)
+	highest_stage = place_stage(0, spawn_position)
 	spawn_position.y -= highest_stage.height
 	while player.position.distance_to(highest_stage.position) < stage_spawn_distance:
-		highest_stage = generate_level_stage(spawn_position)
+		highest_stage = place_random_stage(spawn_position)
 		spawn_position.y -= highest_stage.height
+
+func place_random_stage(position: Vector2) -> Node:
+	rng.randomize()
+	var random_stage_number = rng.randi_range(1, templates_count)
+	return place_stage(random_stage_number, position)
+		
+func place_stage(stage_number: int, position: Vector2) -> Node:
+	var level_path = "res://src/Levels/LevelTemplate%s.tscn" % stage_number
+	var stage_scene = load(level_path)
+	var stage = stage_scene.instance()
+	add_child(stage)
+	stage.position = position
+	return stage
 		
 func _process(delta) -> void:
 	for stage in get_children():
@@ -26,24 +36,10 @@ func _process(delta) -> void:
 			stage.call_deferred("free")
 	
 	if player.position.distance_to(highest_stage.position) < stage_spawn_distance:
-		var new_stage = generate_level_stage(highest_stage.position - Vector2(0, highest_stage.height))
+		var new_stage = place_random_stage(highest_stage.position - Vector2(0, highest_stage.height))
 		highest_stage = new_stage
-
-func generate_level_stage(position: Vector2) -> Node:
-	var template = get_level_template_scene()
-	var stage = template.instance()
-	add_child(stage)
-	stage.position = position
-	return stage
-	
-func get_level_template_scene() -> Resource:
-	rng.randomize()
-	var random_number = rng.randi_range(1, templates_count)
-	var level_path = "res://src/Levels/LevelTemplate%s.tscn"
-	level_path = level_path % random_number
-	var level_stage: Resource = load(level_path)
-	return level_stage
 
 func clear_stages() -> void:
 	for stage in get_children():
 		stage.call_deferred("free")
+

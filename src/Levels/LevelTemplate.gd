@@ -16,7 +16,7 @@ func populate_coals(coal_rate: float) -> void:
 			spawn_coal(cell)
 
 func spawn_coal(cell_position: Vector2) -> void:
-	var coal_position = cell_position * 16 + Vector2(10, -18)
+	var coal_position = cell_position * 16 + $TileMap.position + Vector2(8, -16)
 	var coal = coal_scene.instance()
 	coal.position = coal_position
 	add_child(coal)

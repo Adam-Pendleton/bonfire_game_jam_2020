@@ -210,7 +210,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 1/z_index = 0
 
 [node name="LevelTemplate" type="Node2D"]
-position = Vector2( -0.853973, -34.4534 )
+position = Vector2( -0.0205532, -48.8995 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 243.0 ],
@@ -218,7 +218,7 @@ __meta__ = {
 }
 
 [node name="TileMap" type="TileMap" parent="."]
-position = Vector2( -1.46098, -13.0891 )
+position = Vector2( -0.071942, 0.106823 )
 tile_set = SubResource( 21 )
 cell_size = Vector2( 16, 16 )
 cell_quadrant_size = 8

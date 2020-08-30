@@ -32,8 +32,6 @@ func _process(delta: float) -> void:
 	if game_over and game_started and Input.is_action_just_pressed("drop_money") and $ShowScreenTimer.get_time_left() == 0:
 		game_over = false
 		restart_level()
-		
-	
 			
 	if game_started and $Player.dead and not game_over:
 		game_over = true

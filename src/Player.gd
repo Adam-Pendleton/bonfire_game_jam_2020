@@ -49,7 +49,7 @@ func update_sprite():
 		sprite.flip_h = false
 	
 func _physics_process(delta: float) -> void:
-	if dead:
+	if dead or get_node("/root/Game").game_over:
 		return
 		
 	if Input.is_action_just_pressed("drop_money"):

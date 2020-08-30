@@ -7,7 +7,7 @@ export var stage_spawn_distance = 600
 
 var highest_stage = null
 var templates_count = 8
-var testing_levels = null
+var testing_levels = [2, 1]
 
 func create_initial_level() -> void:	
 	var spawn_position: Vector2 = player.position + Vector2(0, 40)
@@ -48,6 +48,8 @@ func _process(delta) -> void:
 	if player.position.distance_to(highest_stage.position) < stage_spawn_distance:
 		var new_stage = place_random_stage(highest_stage.position - Vector2(0, highest_stage.height))
 		highest_stage = new_stage
+	
+	update()
 
 func clear_stages() -> void:
 	for stage in get_children():

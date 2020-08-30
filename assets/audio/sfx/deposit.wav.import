@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/deposit.wav-5ab61b9061bd505c03eb158813e1272a.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/deposit.wav"
+dest_files=[ "res://.import/deposit.wav-5ab61b9061bd505c03eb158813e1272a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

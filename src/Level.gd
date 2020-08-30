@@ -6,11 +6,10 @@ export var stage_forgetting_distance = 900
 export var stage_spawn_distance = 600
 
 var highest_stage = null
-var templates_count = 6
+var templates_count = 8
 var testing_levels = null
 
-func create_initial_level() -> void:
-	
+func create_initial_level() -> void:	
 	var spawn_position: Vector2 = player.position + Vector2(0, 40)
 	
 	if testing_levels and len(testing_levels) > 0:
@@ -43,7 +42,7 @@ func _process(delta) -> void:
 		return
 		
 	for stage in get_children():
-		if player.position.y < stage.position.y and player.position.distance_to(stage.position) > stage_forgetting_distance:
+		if player.position.y < stage.position.y and player.position.distance_to(stage.position) > stage_forgetting_distance + stage.height:
 			stage.call_deferred("free")
 	
 	if player.position.distance_to(highest_stage.position) < stage_spawn_distance:

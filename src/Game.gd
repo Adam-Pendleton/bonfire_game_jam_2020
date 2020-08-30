@@ -19,16 +19,13 @@ func _ready() -> void:
 	start_music()
 
 func _process(delta: float) -> void:
-	if $IntroScreen:
-		print($IntroScreen.get_node("Timer").time_left)
-	if Input.is_action_just_pressed("drop_money") and not game_started:
+	if not game_started and Input.is_action_just_pressed("drop_money"):
 		progress_intro()
 	
 	if game_over and game_started and Input.is_action_just_pressed("drop_money") and $ShowScreenTimer.get_time_left() == 0:
-		restart_level()
 		game_over = false
+		restart_level()
 			
-	
 	if game_started and $Player.dead and not game_over:
 		game_over = true
 		show_game_over_screen()
@@ -40,7 +37,7 @@ func complete_level() -> void:
 func show_intro() -> void:
 	var intro_screen = preload("res://src/Screens/IntroScreen.tscn").instance()
 	intro_screen.get_node("TextureRect/Art").modulate = Color(1,1,1,1)
-	intro_screen.get_node("TextureRect/Art").texture = intro_slides[0]
+	intro_screen.get_node("TextureRect/Art").texture = intro_slides[1]
 	current_screen = intro_screen
 	add_child(intro_screen)
 	
@@ -52,31 +49,38 @@ func show_splash_screen() -> void:
 	add_child(splash_screen)
 	
 func progress_intro() -> void:
-	print($IntroScreen.get_node("Timer").time_left)
 	if $IntroScreen.get_node("Timer").time_left > 0:
 		return
+
 	intro_slide_number += 1
+
 	if intro_slide_number > len(intro_slides) - 1:
 		game_started = true
 		restart_level()
-	else: 
-		$IntroScreen.get_node("Timer").start(1.1)
+	elif intro_slide_number == 1:
+		$IntroScreen.get_node("Timer").start(1.6)
+		$IntroScreen.get_node("Fader").play("big_fade_out")
+		yield(get_tree().create_timer(.6), "timeout")
+		$IntroScreen.get_node("TextureRect/Art").texture = intro_slides[intro_slide_number]
+	else:
+		$IntroScreen.get_node("Timer").start(1.2)
 		$IntroScreen.get_node("Fader").play("fade_out")
 		yield(get_tree().create_timer(.6), "timeout")
 		$IntroScreen.get_node("TextureRect/Art").texture = intro_slides[intro_slide_number]
 		$IntroScreen.get_node("Fader").play("fade_in")
+	
 
 func show_complete_screen() -> void:
 	var complete_screen = preload("res://src/Screens/CompleteScreen.tscn").instance()
 	add_child(complete_screen)
 	current_screen = complete_screen
-	$ShowScreenTimer.start(2)
+	$ShowScreenTimer.start(1)
 	
 func show_game_over_screen() -> void:
 	var game_over_screen = preload("res://src/Screens/GameOverScreen.tscn").instance()
 	add_child(game_over_screen)
 	current_screen = game_over_screen
-	$ShowScreenTimer.start(1)
+	$ShowScreenTimer.start(.5)
 	
 func restart_level() -> void:
 	initialize_level()

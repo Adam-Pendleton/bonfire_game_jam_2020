@@ -129,8 +129,7 @@ func on_coal_collected() -> void:
 		emit_signal("money_count_changed", money_count)
 	emit_signal("coal_count_changed", coal_count)
 		
-func can_shoot_money() -> bool:
-
+func can_drop_money() -> bool:
 	return money_count > 0
 	
 func decrease_money_count() -> void:
@@ -147,7 +146,7 @@ func indicate_no_money() -> void:
 	pass
 
 func drop_money() -> void:
-	if can_shoot_money():
+	if can_drop_money():
 		var money_bag_scene = preload("res://src/Objects/MoneyBag.tscn")
 		var money_bag = money_bag_scene.instance()
 		money_bag.position = position

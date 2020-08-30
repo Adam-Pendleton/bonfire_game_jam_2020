@@ -27,25 +27,25 @@ __meta__ = {
 }
 
 [node name="Label2" type="Label" parent="TextureRect"]
-margin_left = 66.0
+margin_left = 88.8928
 margin_top = 612.0
-margin_right = 566.0
+margin_right = 588.893
 margin_bottom = 642.0
 rect_pivot_offset = Vector2( 367.948, 37.359 )
 custom_fonts/font = SubResource( 1 )
-text = "Press <jump> to keep working"
+text = "Press <S> to keep working"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label3" type="Label" parent="TextureRect"]
-margin_left = 137.981
+margin_left = 147.981
 margin_top = 210.0
-margin_right = 501.981
+margin_right = 511.981
 margin_bottom = 240.0
 rect_pivot_offset = Vector2( 367.948, 37.359 )
 custom_fonts/font = SubResource( 1 )
-text = "Another day goes by"
+text = "Another day older..."
 __meta__ = {
 "_edit_use_anchors_": false
 }

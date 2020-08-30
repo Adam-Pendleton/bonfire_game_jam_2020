@@ -40,10 +40,10 @@ anchor_left = 0.162
 anchor_top = 0.148
 anchor_right = 0.77
 anchor_bottom = 0.258
-margin_left = 54.28
+margin_left = 54.454
 margin_top = 63.048
-margin_right = 56.48
-margin_bottom = 73.888
+margin_right = -31.41
+margin_bottom = -1.09198
 rect_scale = Vector2( 0.996556, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "BANKRUPT"
@@ -62,12 +62,12 @@ text = "!"
 [node name="h2" type="Label" parent="TextureRect"]
 anchor_right = 0.095
 anchor_bottom = 0.013
-margin_left = 65.144
+margin_left = 82.0
 margin_top = 624.0
-margin_right = 522.144
-margin_bottom = 746.271
+margin_right = 486.865
+margin_bottom = 746.038
 custom_fonts/font = SubResource( 3 )
-text = "Press <jump> to keep working"
+text = "Press <S> to keep working"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -78,3 +78,6 @@ margin_top = 325.836
 margin_right = 431.45
 margin_bottom = 581.836
 texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

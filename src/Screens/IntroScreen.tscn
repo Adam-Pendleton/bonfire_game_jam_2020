@@ -1,10 +1,27 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/fonts/half-bold-pixel-7/half_bold_pixel-7.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/images/screens/game_over.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/screens/Title-Page.png" type="Texture" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "big_fade_out"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect/BigArt:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "fade_in"
@@ -55,6 +72,7 @@ __meta__ = {
 }
 
 [node name="Art" type="TextureRect" parent="TextureRect"]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 175.45
 margin_top = 325.836
 margin_right = 431.45
@@ -63,20 +81,32 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="BigArt" type="TextureRect" parent="TextureRect"]
+margin_left = 98.1064
+margin_top = 114.95
+margin_right = 539.106
+margin_bottom = 864.95
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Label" type="Label" parent="TextureRect"]
 anchor_right = 0.341
 anchor_bottom = 0.51
-margin_left = 292.129
-margin_top = 675.872
-margin_right = 399.276
-margin_bottom = 144.132
+margin_left = 316.825
+margin_top = 748.197
+margin_right = 487.529
+margin_bottom = 633.637
 custom_fonts/font = SubResource( 1 )
-text = "Press <Space> to continue >"
+text = "Press <S> to continue >"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Fader" type="AnimationPlayer" parent="."]
+anims/big_fade_out = SubResource( 4 )
 anims/fade_in = SubResource( 2 )
 anims/fade_out = SubResource( 3 )
 

@@ -9,8 +9,8 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	if game_over and Input.is_action_just_pressed("up") and $ShowScreenTimer.get_time_left() == 0:
-		game_over = false
 		restart_level()
+		game_over = false
 		
 	if $Player.dead and not game_over:
 		game_over = true
@@ -35,6 +35,7 @@ func restart_level() -> void:
 	$Bank.reset_speed()
 	$Player.clear_money_count()
 	if get_node("GameOverScreen"):
+		$GameOverScreen.get_node("TextureRect").visible = false
 		$GameOverScreen.call_deferred("free")
 	else:
 		$CompleteScreen.call_deferred("free")

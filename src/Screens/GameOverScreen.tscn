@@ -8,11 +8,11 @@
 size = 45
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 size = 62
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 size = 31
 font_data = ExtResource( 3 )
 
@@ -55,7 +55,7 @@ margin_left = 281.018
 margin_top = -9.49326
 margin_right = 321.018
 margin_bottom = 53.5067
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 text = "!"
 
 [node name="h2" type="Label" parent="."]
@@ -65,7 +65,7 @@ margin_left = 54.1445
 margin_top = 576.279
 margin_right = 511.145
 margin_bottom = 698.55
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "Press <jump> to keep working"
 __meta__ = {
 "_edit_use_anchors_": false

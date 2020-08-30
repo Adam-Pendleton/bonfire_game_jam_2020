@@ -1,8 +1,25 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/images/bank/Bank--For-Export-3.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/bank/Bank--For-Export-1.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/bank/Bank--For-Export-2.png" type="Texture" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "chew"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("BaseSprite:offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1.1, 1.7 ),
+"transitions": PoolRealArray( 1, 0.574349, 1.23114, 2.82843 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 10, -5 ), Vector2( 0, -7 ), Vector2( -8, -5 ) ]
+}
 
 [node name="BankBackground" type="KinematicBody2D"]
 position = Vector2( 0, -95.125 )
@@ -43,5 +60,10 @@ texture = ExtResource( 5 )
 [node name="BaseSprite" type="Sprite" parent="."]
 self_modulate = Color( 1, 1, 1, 0.886275 )
 position = Vector2( -15.7028, 202.684 )
-scale = Vector2( 1.45888, 1.45888 )
+scale = Vector2( 1.45147, 1.45888 )
 texture = ExtResource( 1 )
+offset = Vector2( -1.0116, -6.94335 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "chew"
+anims/chew = SubResource( 1 )

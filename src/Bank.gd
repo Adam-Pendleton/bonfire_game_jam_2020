@@ -21,4 +21,4 @@ func reset_speed() -> void:
 func sync_background(position: Vector2, speed: float) -> void:
 	var background = get_node("/root/Game/BankBackground")
 	background.position.x = position.x
-	background.position.y = position.y - 25
+	background.position.y = position.y - 15

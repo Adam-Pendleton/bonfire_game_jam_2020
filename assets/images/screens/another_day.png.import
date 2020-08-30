@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/game_over.png-64cfa7afafd801be6ec999598721fb65.stex"
+path="res://.import/another_day.png-718c45e5e10c663791f8d14e1d66f927.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/screens/game_over.png"
-dest_files=[ "res://.import/game_over.png-64cfa7afafd801be6ec999598721fb65.stex" ]
+source_file="res://assets/images/screens/another_day.png"
+dest_files=[ "res://.import/another_day.png-718c45e5e10c663791f8d14e1d66f927.stex" ]
 
 [params]
 

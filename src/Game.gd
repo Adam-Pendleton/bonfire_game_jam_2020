@@ -1,12 +1,13 @@
 extends Node
 
 var game_over: bool = false
+var game_started: bool = false
 var player_start_position := Vector2(300, 100)
 
 func _ready() -> void:
 	initialize_level()
 	start_music()
-	
+
 func _process(delta: float) -> void:
 	if game_over and Input.is_action_just_pressed("up") and $ShowScreenTimer.get_time_left() == 0:
 		restart_level()

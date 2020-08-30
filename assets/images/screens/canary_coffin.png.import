@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/game_over.png-64cfa7afafd801be6ec999598721fb65.stex"
+path="res://.import/canary_coffin.png-4b56aabb34aeccc6da9a815308508d67.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/screens/game_over.png"
-dest_files=[ "res://.import/game_over.png-64cfa7afafd801be6ec999598721fb65.stex" ]
+source_file="res://assets/images/screens/canary_coffin.png"
+dest_files=[ "res://.import/canary_coffin.png-4b56aabb34aeccc6da9a815308508d67.stex" ]
 
 [params]
 

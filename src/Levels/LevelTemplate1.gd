@@ -1,6 +1,6 @@
 extends LevelTemplate
 
-export var height = 130
+export var height = 300
 
 func _ready() -> void:
 	populate_coals(.1)

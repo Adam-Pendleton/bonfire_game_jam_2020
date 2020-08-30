@@ -28,7 +28,7 @@ func show_complete_screen() -> void:
 func show_game_over_screen() -> void:
 	var game_over_screen = preload("res://src/Screens/GameOverScreen.tscn").instance()
 	add_child(game_over_screen)
-	$ShowScreenTimer.start(2)
+	$ShowScreenTimer.start(1)
 	
 func restart_level() -> void:
 	initialize_level()

@@ -58,6 +58,9 @@ margin_right = 321.018
 margin_bottom = 53.5067
 custom_fonts/font = SubResource( 2 )
 text = "!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="h2" type="Label" parent="TextureRect"]
 anchor_right = 0.095

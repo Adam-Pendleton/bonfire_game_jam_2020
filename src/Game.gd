@@ -7,11 +7,11 @@ var on_splash_screen: bool = false
 var current_screen = null
 var player_start_position := Vector2(300, 100)
 onready var intro_slides: Array = [
-	preload("res://assets/images/screens/Title-Page.png"),
-	preload("res://assets/images/screens/master_of_mine_arts.png"),
-	preload("res://assets/images/screens/sweet_axe.png"),
-	preload("res://assets/images/screens/broke.png"),
-	preload("res://assets/images/screens/looming_bank.png")
+	[preload("res://assets/images/screens/Title-Page.png"), "", ""],
+	[preload("res://assets/images/screens/master_of_mine_arts.png"), "I just graduated with a Bachelors of Mine Arts!\n\nNow I need to pay back all that debt!", ""],
+	[preload("res://assets/images/screens/sweet_axe.png"), "Wow!", ""],
+	[preload("res://assets/images/screens/broke.png"), "Where will I get startup cash?", "I CAN HELP YOU WITH THAT..."],
+	[preload("res://assets/images/screens/looming_bank.png"), "", "YOU CAN BORROW FROM MEEEEEE!!"]
 ]
 
 func _ready() -> void:
@@ -37,7 +37,7 @@ func complete_level() -> void:
 func show_intro() -> void:
 	var intro_screen = preload("res://src/Screens/IntroScreen.tscn").instance()
 	intro_screen.get_node("TextureRect/Art").modulate = Color(1,1,1,1)
-	intro_screen.get_node("TextureRect/Art").texture = intro_slides[1]
+	intro_screen.get_node("TextureRect/Art").texture = intro_slides[1][0]
 	current_screen = intro_screen
 	add_child(intro_screen)
 	
@@ -61,13 +61,17 @@ func progress_intro() -> void:
 		$IntroScreen.get_node("Timer").start(1.6)
 		$IntroScreen.get_node("Fader").play("big_fade_out")
 		yield(get_tree().create_timer(.6), "timeout")
-		$IntroScreen.get_node("TextureRect/Art").texture = intro_slides[intro_slide_number]
+		$IntroScreen.get_node("TextureRect/Art").texture = intro_slides[intro_slide_number][0]
+		$IntroScreen.get_node("TextureRect/ColeText").text = intro_slides[intro_slide_number][1]
+		$IntroScreen.get_node("TextureRect/BankText").text = intro_slides[intro_slide_number][2]
 	else:
 		$IntroScreen.get_node("Timer").start(1.2)
 		$IntroScreen.get_node("Fader").play("fade_out")
 		yield(get_tree().create_timer(.6), "timeout")
-		$IntroScreen.get_node("TextureRect/Art").texture = intro_slides[intro_slide_number]
+		$IntroScreen.get_node("TextureRect/Art").texture = intro_slides[intro_slide_number][0]
 		$IntroScreen.get_node("Fader").play("fade_in")
+		$IntroScreen.get_node("TextureRect/ColeText").text = intro_slides[intro_slide_number][1]
+		$IntroScreen.get_node("TextureRect/BankText").text = intro_slides[intro_slide_number][2]
 	
 
 func show_complete_screen() -> void:

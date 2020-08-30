@@ -5,9 +5,11 @@
 [ext_resource path="res://assets/images/screens/Title-Page.png" type="Texture" id=3]
 
 [sub_resource type="DynamicFont" id=1]
+size = 24
+outline_color = Color( 0.376471, 0.376471, 0.376471, 1 )
 font_data = ExtResource( 1 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 resource_name = "big_fade_out"
 length = 2.0
 tracks/0/type = "value"
@@ -23,8 +25,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "fade_in"
+[sub_resource type="Animation" id=3]
 tracks/0/type = "value"
 tracks/0/path = NodePath("TextureRect/Art:modulate")
 tracks/0/interp = 1
@@ -38,8 +39,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "fade_out"
+[sub_resource type="Animation" id=4]
 tracks/0/type = "value"
 tracks/0/path = NodePath("TextureRect/Art:modulate")
 tracks/0/interp = 1
@@ -82,6 +82,7 @@ __meta__ = {
 }
 
 [node name="BigArt" type="TextureRect" parent="TextureRect"]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 98.1064
 margin_top = 114.95
 margin_right = 539.106
@@ -105,10 +106,40 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ColeText" type="Label" parent="TextureRect"]
+anchor_right = 0.341
+anchor_bottom = 0.51
+margin_left = 144.457
+margin_top = 797.971
+margin_right = 315.604
+margin_bottom = 333.231
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.968627, 0.823529, 0.168627, 1 )
+custom_colors/font_color_shadow = Color( 0.376471, 0.376471, 0.376471, 1 )
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BankText" type="Label" parent="TextureRect"]
+anchor_right = 0.341
+anchor_bottom = 0.51
+margin_left = 144.457
+margin_top = 904.429
+margin_right = 315.604
+margin_bottom = 439.689
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.956863, 0.188235, 0.0117647, 1 )
+custom_colors/font_color_shadow = Color( 0.419608, 0.403922, 0.403922, 1 )
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Fader" type="AnimationPlayer" parent="."]
-anims/big_fade_out = SubResource( 4 )
-anims/fade_in = SubResource( 2 )
-anims/fade_out = SubResource( 3 )
+anims/big_fade_out = SubResource( 2 )
+anims/fade_in = SubResource( 3 )
+anims/fade_out = SubResource( 4 )
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

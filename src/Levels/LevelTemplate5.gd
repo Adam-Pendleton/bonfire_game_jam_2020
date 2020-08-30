@@ -3,4 +3,4 @@ extends LevelTemplate
 export var height = 405
 
 func _ready() -> void:
-	populate_coals(.3)
+	populate_coals(.4)

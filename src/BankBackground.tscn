@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
+[ext_resource path="res://assets/images/bank/Bank--For-Export-3.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/bank/Bank--For-Export-1.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/bank/Bank--For-Export-2.png" type="Texture" id=5]
 
 [node name="BankBackground" type="KinematicBody2D"]
+position = Vector2( 0, -95.125 )
 collision_layer = 8
 collision_mask = 16
 
@@ -37,3 +39,9 @@ position = Vector2( -245.727, -98.5834 )
 rotation = -0.717221
 scale = Vector2( -0.810707, 0.810707 )
 texture = ExtResource( 5 )
+
+[node name="BaseSprite" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0.886275 )
+position = Vector2( -15.7028, 202.684 )
+scale = Vector2( 1.45888, 1.45888 )
+texture = ExtResource( 1 )

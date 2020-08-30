@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/Bank.gd" type="Script" id=1]
-[ext_resource path="res://assets/images/bank/Bank--For-Export-3.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/bank/Bank--For-Export-4.png" type="Texture" id=3]
 
 [node name="Bank" type="KinematicBody2D"]
@@ -13,12 +12,6 @@ script = ExtResource( 1 )
 position = Vector2( -1.01514, 0 )
 scale = Vector2( 1.00886, 1.03939 )
 polygon = PoolVector2Array( -7.00912, 135.234, 256.534, 149.337, 2075.75, 723.551, -2270.94, 741.823, -301.979, 164.152, -266.946, 157.162 )
-
-[node name="BaseSprite" type="Sprite" parent="."]
-position = Vector2( -15.7028, 202.684 )
-scale = Vector2( 1.45888, 1.45888 )
-z_index = 1
-texture = ExtResource( 2 )
 
 [node name="TeethSprite" type="Sprite" parent="."]
 position = Vector2( -13.5545, 196.543 )

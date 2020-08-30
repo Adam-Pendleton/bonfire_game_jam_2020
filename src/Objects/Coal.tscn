@@ -63,7 +63,8 @@ script = ExtResource( 2 )
 shape = SubResource( 1 )
 
 [node name="coin" type="Sprite" parent="."]
-position = Vector2( 0.143156, -5 )
+
+position = Vector2( 0, -5 )
 scale = Vector2( 2.18312, 2.00976 )
 texture = ExtResource( 1 )
 region_filter_clip = true

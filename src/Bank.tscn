@@ -1,7 +1,36 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/Bank.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/bank/Bank--For-Export-4.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "bite"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("TeethSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TeethSprite:offset")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 2.2974, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -15 ) ]
+}
 
 [node name="Bank" type="KinematicBody2D"]
 collision_layer = 8
@@ -18,3 +47,8 @@ position = Vector2( -13.5545, 196.543 )
 scale = Vector2( 1.4488, 1.4488 )
 z_index = 2
 texture = ExtResource( 3 )
+offset = Vector2( 0, -11.0463 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "bite"
+anims/bite = SubResource( 1 )

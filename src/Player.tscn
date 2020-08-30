@@ -166,3 +166,4 @@ anims/bling = SubResource( 6 )
 anims/default = SubResource( 7 )
 
 [node name="CoyoteTimer" type="Timer" parent="."]
+one_shot = true

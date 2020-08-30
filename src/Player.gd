@@ -56,8 +56,13 @@ func _physics_process(delta: float) -> void:
 		drop_money()
 	
 	var new_velocity = get_new_velocity()
-	if is_on_floor():
+	
+	if $CoyoteTimer.time_left > 0:
 		jump_count = 0
+	
+	if is_on_floor():
+		$CoyoteTimer.start(.1)
+		
 	velocity = move_and_slide(new_velocity, Vector2.UP)
 	check_if_dead()
 	update_sprite()

@@ -21,6 +21,7 @@ signal coal_count_changed
 signal money_count_changed
 
 onready var anim_player: AnimationPlayer = get_node("AnimationPlayer")
+onready var dollar_anim_player: AnimationPlayer = get_node("DollarAnimationPlayer")
 onready var jump_sound: AudioStreamPlayer2D = get_node("AudioStreamPlayer2D")
 
 func _ready() -> void:
@@ -117,6 +118,7 @@ func add_air_resistance(given_velocity: Vector2) -> Vector2:
 func on_coal_collected() -> void:
 	coal_count = (coal_count + 1) % money_bag_value
 	if coal_count == 0:
+		dollar_anim_player.play("bling")
 		money_count += 1
 		emit_signal("money_count_changed", money_count)
 	emit_signal("coal_count_changed", coal_count)

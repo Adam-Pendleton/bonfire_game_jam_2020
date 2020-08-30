@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/images/player/player_sprite.png" type="Texture" id=1]
 [ext_resource path="res://src/Player.gd" type="Script" id=2]
 [ext_resource path="res://assets/audio/sfx/jump_sound.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/images/objects/moneyfloater_spaced.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 9.34348, 14.4694 )
@@ -71,6 +72,61 @@ tracks/0/keys = {
 "values": [ 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 ]
 }
 
+[sub_resource type="Animation" id=7]
+resource_name = "bling"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("DollarSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.9, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DollarSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("DollarSprite:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 0.329877, 1 ),
+"update": 0,
+"values": [ Vector2( 1.90445, -20.5081 ), Vector2( 1.90445, -41.4745 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/path = NodePath("DollarSprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
 [node name="Player" type="KinematicBody2D"]
 scale = Vector2( 1.68215, 1.68215 )
 collision_layer = 2
@@ -98,3 +154,14 @@ anims/run = SubResource( 5 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
+
+[node name="DollarSprite" type="Sprite" parent="."]
+position = Vector2( 1.90445, -20.5081 )
+texture = ExtResource( 4 )
+hframes = 13
+
+[node name="DollarAnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "bling"
+playback_speed = 1.5
+anims/bling = SubResource( 7 )
+anims/default = SubResource( 6 )

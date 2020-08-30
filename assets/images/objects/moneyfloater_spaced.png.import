@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/coal_outline.png-cae9e733010ab46fe89677577bfbbff7.stex"
+path="res://.import/moneyfloater_spaced.png-aeaee208014c01b09fcb5d7540b56914.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/objects/coal_outline.png"
-dest_files=[ "res://.import/coal_outline.png-cae9e733010ab46fe89677577bfbbff7.stex" ]
+source_file="res://assets/images/objects/moneyfloater_spaced.png"
+dest_files=[ "res://.import/moneyfloater_spaced.png-aeaee208014c01b09fcb5d7540b56914.stex" ]
 
 [params]
 

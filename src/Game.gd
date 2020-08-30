@@ -5,6 +5,7 @@ var game_started: bool = false
 var intro_slide_number: int = 0
 var on_splash_screen: bool = false
 var current_screen = null
+var show_intro = false
 var player_start_position := Vector2(300, 100)
 onready var intro_slides: Array = [
 	[preload("res://assets/images/screens/Title-Page.png"), "", ""],
@@ -15,7 +16,10 @@ onready var intro_slides: Array = [
 ]
 
 func _ready() -> void:
-	show_intro()
+	if show_intro:
+		 show_intro()
+	else:
+		start_game()
 	start_music()
 
 func _process(delta: float) -> void:
@@ -48,6 +52,12 @@ func show_splash_screen() -> void:
 	current_screen = splash_screen
 	add_child(splash_screen)
 	
+func start_game() -> void:
+	if current_screen:
+		current_screen.call_deferred("free")
+	game_started = true
+	restart_level()	
+	
 func progress_intro() -> void:
 	if $IntroScreen.get_node("Timer").time_left > 0:
 		return
@@ -55,8 +65,7 @@ func progress_intro() -> void:
 	intro_slide_number += 1
 
 	if intro_slide_number > len(intro_slides) - 1:
-		game_started = true
-		restart_level()
+		start_game()
 	elif intro_slide_number == 1:
 		$IntroScreen.get_node("Timer").start(1.6)
 		$IntroScreen.get_node("Fader").play("big_fade_out")
@@ -90,7 +99,8 @@ func restart_level() -> void:
 	initialize_level()
 	$Bank.reset_speed()
 	$Player.clear_money_count()
-	current_screen.call_deferred("free")
+	if current_screen:
+		current_screen.call_deferred("free")
 	
 func initialize_level() -> void:
 	$Player.dead = false

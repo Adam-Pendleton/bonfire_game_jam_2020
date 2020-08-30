@@ -3,7 +3,7 @@ extends KinematicBody2D
 export var starting_speed = 1.0
 export var acceleration_factor = .001
 
-var knockback = 25
+var knockback = 15
 var speed
 
 func _ready() -> void:
@@ -22,6 +22,8 @@ func _physics_process(delta: float) -> void:
 	if $StunTimer.time_left == 0:
 		position.y -= speed
 		speed += speed * acceleration_factor
+	else:
+		position.y += 0.5
 	sync_background(position, speed)
 
 func reset_speed() -> void:

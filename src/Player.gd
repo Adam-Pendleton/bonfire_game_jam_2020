@@ -21,6 +21,10 @@ signal coal_count_changed
 signal money_count_changed
 
 onready var anim_player: AnimationPlayer = get_node("AnimationPlayer")
+onready var jump_sound: AudioStreamPlayer2D = get_node("AudioStreamPlayer2D")
+
+func _ready() -> void:
+	pass
 
 func update_sprite():
 	if velocity.y < 0:
@@ -87,6 +91,7 @@ func add_player_input(given_velocity: Vector2) -> Vector2:
 	
 	if Input.is_action_just_pressed("up") and jump_count < 1:
 		given_velocity.y = -jump_strength
+		jump_sound.play(0.2)
 		jump_count += 1
 		
 	if Input.is_action_just_released("up") and given_velocity.y < -jump_strength / 2:

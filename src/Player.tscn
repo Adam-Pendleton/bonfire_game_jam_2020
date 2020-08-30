@@ -26,7 +26,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=3]
 resource_name = "idle"
-length = 0.5
+length = 1.2
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("player_sprite:frame")
 tracks/0/interp = 0
@@ -34,10 +35,10 @@ tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 3, 4 ]
+"values": [ 0, 1, 2, 3, 4, 5 ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -142,10 +143,11 @@ position = Vector2( 0.783615, 0.835609 )
 texture = ExtResource( 1 )
 vframes = 3
 hframes = 12
-frame = 25
+frame = 22
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
+playback_speed = 2.0
 anims/fall = SubResource( 2 )
 anims/idle = SubResource( 3 )
 anims/jump = SubResource( 4 )

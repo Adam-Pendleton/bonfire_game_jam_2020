@@ -5,7 +5,7 @@ var game_started: bool = false
 var intro_slide_number: int = 0
 var on_splash_screen: bool = false
 var current_screen = null
-var show_intro = false
+var show_intro = true
 var player_start_position := Vector2(300, 100)
 onready var intro_slides: Array = [
 	[preload("res://assets/images/screens/Title-Page.png"), "", ""],
@@ -26,9 +26,14 @@ func _process(delta: float) -> void:
 	if not game_started and Input.is_action_just_pressed("drop_money"):
 		progress_intro()
 	
+	if not game_started and Input.is_action_just_pressed("skip"):
+		start_game()
+	
 	if game_over and game_started and Input.is_action_just_pressed("drop_money") and $ShowScreenTimer.get_time_left() == 0:
 		game_over = false
 		restart_level()
+		
+	
 			
 	if game_started and $Player.dead and not game_over:
 		game_over = true

@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/images/bank/Bank--For-Export-1.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/bank/Bank--For-Export-2.png" type="Texture" id=5]
+
+[node name="BankBackground" type="KinematicBody2D"]
+collision_layer = 8
+collision_mask = 16
+
+[node name="TentacleMidRightSprite" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.568627 )
+position = Vector2( 299.779, -92.6076 )
+rotation = 0.437904
+scale = Vector2( 0.830385, 0.830385 )
+z_index = -1
+texture = ExtResource( 4 )
+
+[node name="TentacleFarRightSprite" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.811765 )
+position = Vector2( 291.66, 18.5025 )
+rotation = -5.69811
+scale = Vector2( 0.794791, 0.794791 )
+texture = ExtResource( 5 )
+offset = Vector2( -150.701, -87.5518 )
+
+[node name="TentacleMidLeftSprite" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.243137 )
+position = Vector2( -203.865, -180.039 )
+rotation = -0.443841
+scale = Vector2( -0.784164, 0.784164 )
+texture = ExtResource( 4 )
+offset = Vector2( 200.453, 74.8313 )
+
+[node name="TentacleFarLeftSprite" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.615686 )
+position = Vector2( -245.727, -98.5834 )
+rotation = -0.717221
+scale = Vector2( -0.810707, 0.810707 )
+texture = ExtResource( 5 )

@@ -1,10 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/Bank.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/bank/Bank--For-Export-3.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/bank/Bank--For-Export-4.png" type="Texture" id=3]
-[ext_resource path="res://assets/images/bank/Bank--For-Export-1.png" type="Texture" id=4]
-[ext_resource path="res://assets/images/bank/Bank--For-Export-2.png" type="Texture" id=5]
 
 [node name="Bank" type="KinematicBody2D"]
 collision_layer = 8
@@ -27,30 +25,3 @@ position = Vector2( -13.5545, 196.543 )
 scale = Vector2( 1.4488, 1.4488 )
 z_index = 2
 texture = ExtResource( 3 )
-
-[node name="TentacleMidRightSprite" type="Sprite" parent="."]
-position = Vector2( 299.779, -92.6076 )
-rotation = 0.437904
-scale = Vector2( 0.830385, 0.830385 )
-z_index = -1
-texture = ExtResource( 4 )
-
-[node name="TentacleFarRightSprite" type="Sprite" parent="."]
-position = Vector2( 291.66, 18.5025 )
-rotation = -5.69811
-scale = Vector2( 0.794791, 0.794791 )
-texture = ExtResource( 5 )
-offset = Vector2( -150.701, -87.5518 )
-
-[node name="TentacleMidLeftSprite" type="Sprite" parent="."]
-position = Vector2( -203.865, -180.039 )
-rotation = -0.443841
-scale = Vector2( -0.784164, 0.784164 )
-texture = ExtResource( 4 )
-offset = Vector2( 200.453, 74.8313 )
-
-[node name="TentacleFarLeftSprite" type="Sprite" parent="."]
-position = Vector2( -245.727, -97.2356 )
-rotation = -0.717221
-scale = Vector2( -0.810707, 0.810707 )
-texture = ExtResource( 5 )
